@@ -5,14 +5,18 @@ const mongoose = require("mongoose");
 
 const app = express();
 
-//Routes
+//Add Routes
+const exerciseRouter = require("./src/routes/exercise");
+
+//Add Paths
 app.use(cors());
 app.use(express.json());
+app.use("/api/exercises", exerciseRouter);
 
 //Config .env
 dotenv.config();
 
-// Declare a PORT
+// Declare a  Runing PORT
 const PORT = 8088;
 
 // Check runing port
