@@ -17,9 +17,9 @@ exerciseRouter.post("/", async (req, res) => {
 exerciseRouter.get("/", async (req, res) => {
     try {
         const exercises = await exerciseModel.find({});
-        res.send(exercises);
+        res.status(200).send(exercises);
     } catch (error) {
-        res.status(500).send();
+        res.status(500).send(error.message);
     }
 });
 
@@ -27,12 +27,12 @@ exerciseRouter.get("/", async (req, res) => {
 exerciseRouter.get("/:id", async (req, res) => {
     try {
         const exercise = await exerciseModel.find({ id: req.params.id });
-        if (!exercise) {
-            return res.status(404).send();
+        if (exercise.length === 0) {
+            return res.status(404).send("No exercises found");
         }
-        res.send(exercise);
+        res.status(200).send(exercise);
     } catch (error) {
-        res.status(500).send();
+        res.status(500).send(error.message);
     }
 });
 
@@ -40,9 +40,12 @@ exerciseRouter.get("/:id", async (req, res) => {
 exerciseRouter.get("/group/:group", async (req, res) => {
     try {
         const exercises = await exerciseModel.find({ group: req.params.group });
-        res.send(exercises);
+        if (exercises.length === 0) {
+            return res.status(404).send("No exercises found");
+        }
+        res.status(200).send(exercises);
     } catch (error) {
-        res.status(500).send();
+        res.status(500).send(error.message);
     }
 });
 
