@@ -83,7 +83,7 @@ exerciseRouter.delete("/:id", async (req, res) => {
 
         if (!exercise) {
             let errorObj = {
-                message: "The given food id does not match any food on our system",
+                message: "The given exercise id does not match any exercise on our system",
                 statusCode: "NOT FOUND",
             };
             return res.status(404).send(errorObj);
