@@ -1,13 +1,13 @@
 const express = require("express");
 const async = require("async");
-const customscheduleRouter = express.Router();
-const customscheduleModel = require("../models/CustomSchedule");
+const customScheduleRouter = express.Router();
+const customScheduleModel = require("../models/CustomSchedule");
 const exerciseModel = require("../models/exercise");
 
 // Custom schedule exercise by user id
-customscheduleRouter.get("/:userId", async (req, res) => {
+customScheduleRouter.get("/:userId", async (req, res) => {
     try {
-        const customScheduleExercises = await customscheduleModel
+        const customScheduleExercises = await customScheduleModel
             .find({
                 userId: req.params.userId,
             });
@@ -44,4 +44,4 @@ customscheduleRouter.get("/:userId", async (req, res) => {
     }
 });
 
-module.exports = customscheduleRouter;
+module.exports = customScheduleRouter;

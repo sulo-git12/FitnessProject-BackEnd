@@ -6,6 +6,6 @@ const customScheduleSchema = new mongoose.Schema({
 });
 
 //  CustomSchedule Model
-const CustomSchedule = mongoose.model("customschedules", customScheduleSchema);
+const CustomSchedule = mongoose.model("CustomSchedule", customScheduleSchema);
 
 module.exports = CustomSchedule;
