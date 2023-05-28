@@ -7,11 +7,13 @@ const app = express();
 
 //Add Routes
 const exerciseRouter = require("./src/routes/exercise");
+const customScheduleRouter = require("./src/routes/CustomSchedule");
 
 //Add Paths
 app.use(cors());
 app.use(express.json());
 app.use("/api/exercises", exerciseRouter);
+app.use("/api/customschedules", customScheduleRouter);
 
 //Config .env
 dotenv.config();
